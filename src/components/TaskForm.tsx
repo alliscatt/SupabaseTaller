@@ -1,5 +1,3 @@
-// src/components/TaskForm.tsx
-
 import { useState } from "react"
 
 interface Props {
@@ -43,132 +41,155 @@ export function TaskForm({ onCrear, search, setSearch }: Props) {
 
   return (
 
-    <>
+    <div style={{ marginBottom: "2rem" }}>
 
-      {/* BARRA BUSCADORA */}
+      {/* BARRA SUPERIOR */}
 
       <div
         style={{
-          marginBottom: "16px",
           display: "flex",
-          gap: "8px"
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "18px",
+          gap: "12px"
         }}
       >
 
-        <input
-          type="text"
-          placeholder="🔎 Buscar tareas..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+        <h2
           style={{
-            flex: 1,
-            padding: "10px",
-            borderRadius: "8px",
-            border: "1px solid #334155",
-            background: "#0f172a",
-            color: "white"
+            margin: 0,
+            fontSize: "20px",
+            color: "#ec4899"
           }}
-        />
+        >
+          ✏️ Crear tarea
+        </h2>
 
-        {search && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px"
+          }}
+        >
 
-          <button
-            onClick={() => setSearch("")}
+          {/* BUSCADOR */}
+
+          <input
+            type="text"
+            placeholder="Buscar..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             style={{
-              background: "#334155",
-              border: "none",
-              borderRadius: "8px",
-              padding: "10px 14px",
-              color: "white",
-              cursor: "pointer"
+              padding: "10px 12px",
+              borderRadius: "10px",
+              border: "1px solid #e5e7eb",
+              background: "white",
+              fontSize: "13px",
+              outline: "none",
+              width: "180px",
+              color: "#111827"
             }}
-          >
-            ❌
-          </button>
+          />
 
-        )}
+          {search && (
+
+            <button
+              onClick={() => setSearch("")}
+              style={{
+                border: "none",
+                background: "#f472b6",
+                color: "white",
+                borderRadius: "8px",
+                padding: "6px 10px",
+                cursor: "pointer"
+              }}
+            >
+              ✖
+            </button>
+
+          )}
+
+        </div>
 
       </div>
 
 
+      {/* FORMULARIO */}
+
       <form
         onSubmit={handleSubmit}
         style={{
-          background: "#1e293b",
-          padding: "24px",
-          borderRadius: "12px",
-          marginBottom: "2rem",
-          display: "flex",
-          flexDirection: "column",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr auto",
           gap: "12px",
-          boxShadow: "0 10px 25px rgba(0,0,0,0.25)"
+          background: "white",
+          padding: "18px",
+          borderRadius: "16px",
+          boxShadow: "0 8px 25px rgba(0,0,0,0.08)"
         }}
       >
 
-        <h2 style={{
-          margin: 0,
-          fontSize: "20px",
-          fontWeight: "600"
-        }}>
-          Nueva tarea
-        </h2>
+        {/* INPUT TITULO */}
 
         <input
           type="text"
-          placeholder="Título *"
+          placeholder="Título de la tarea *"
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
           required
           style={{
-            padding: "12px",
-            borderRadius: "8px",
-            border: "1px solid #334155",
-            background: "#0f172a",
-            color: "white",
-            fontSize: "14px"
+            padding: "10px 12px",
+            borderRadius: "10px",
+            border: "1px solid #e5e7eb",
+            background: "white",
+            fontSize: "13px",
+            outline: "none",
+            color: "#111827"
           }}
         />
 
-        <textarea
+        {/* INPUT DESCRIPCIÓN */}
+
+        <input
+          type="text"
           placeholder="Descripción (opcional)"
           value={descripcion}
           onChange={(e) => setDescripcion(e.target.value)}
-          rows={3}
           style={{
             padding: "12px",
-            borderRadius: "8px",
-            border: "1px solid #334155",
-            background: "#0f172a",
-            color: "white",
+            borderRadius: "10px",
+            border: "1px solid #e5e7eb",
+            background: "#f9fafb",
             fontSize: "14px",
-            resize: "vertical"
+            outline: "none",
+            color: "#111827"
           }}
         />
+
+        {/* BOTÓN AGREGAR */}
 
         <button
           type="submit"
           disabled={submitting || !titulo.trim()}
           style={{
-            marginTop: "6px",
-            background: submitting ? "#475569" : "#2563eb",
+            background: "linear-gradient(135deg,#f472b6,#ec4899)",
             color: "white",
             border: "none",
-            padding: "12px",
-            borderRadius: "8px",
+            padding: "12px 18px",
+            borderRadius: "10px",
             cursor: submitting ? "not-allowed" : "pointer",
             fontWeight: "600",
             fontSize: "14px",
-            transition: "all 0.2s"
+            boxShadow: "0 5px 12px rgba(236,72,153,0.35)"
           }}
         >
-
-          {submitting ? "Guardando..." : "+ Agregar tarea"}
-
+          {submitting ? "..." : "Agregar"}
         </button>
 
       </form>
 
-    </>
+    </div>
 
   )
 

@@ -25,7 +25,6 @@ export function Login() {
     try {
 
       await signIn(email, password)
-
       navigate("/")
 
     } catch (err: any) {
@@ -45,183 +44,227 @@ export function Login() {
     <div
       style={{
         minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "linear-gradient(135deg,#0f172a,#1e293b)"
+        display: "grid",
+        gridTemplateColumns: "1fr 420px",
+        background: "linear-gradient(135deg,#fbc2eb,#a6c1ee)",
+        fontFamily: "Segoe UI, sans-serif"
       }}
     >
 
+      {/* PANEL IZQUIERDO DECORATIVO */}
+
       <div
         style={{
-          width: "380px",
-          background: "#1e293b",
-          padding: "35px",
-          borderRadius: "12px",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "80px",
           color: "white"
         }}
       >
 
-        {/* HEADER */}
+        <h1
+          style={{
+            fontSize: "42px",
+            marginBottom: "20px",
+            fontWeight: 700
+          }}
+        >
+          Organiza tus tareas
+        </h1>
 
-        <div style={{ textAlign: "center", marginBottom: "25px" }}>
-
-          <p style={{ color: "#94a3b8", marginBottom: "5px" }}>
-            Panel personal
-          </p>
-
-          <h1 style={{ margin: 0 }}>
-            Mis Tareas
-          </h1>
-
-        </div>
-
-        <p style={{
-          marginBottom: "15px",
-          fontWeight: "600"
-        }}>
-          Iniciar sesión
+        <p
+          style={{
+            maxWidth: "420px",
+            fontSize: "18px",
+            lineHeight: "1.6",
+            opacity: 0.9
+          }}
+        >
+          Gestiona tu productividad diaria, visualiza tu progreso
+          y mantén todo bajo control en un solo lugar.
         </p>
 
-        {error && (
+        <div
+          style={{
+            marginTop: "40px",
+            fontSize: "60px",
+            opacity: 0.8
+          }}
+        >
+          📝✨📊
+        </div>
 
-          <div
+      </div>
+
+      {/* PANEL DERECHO FORMULARIO */}
+
+      <div
+        style={{
+          background: "white",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "40px"
+        }}
+      >
+
+        <div style={{ width: "100%", maxWidth: "320px" }}>
+
+          <h2
             style={{
-              background: "#7f1d1d",
-              padding: "10px",
-              borderRadius: "6px",
-              marginBottom: "15px",
+              marginBottom: "10px",
+              color: "#ec4899",
+              fontWeight: 700
+            }}
+          >
+            Bienvenidos
+          </h2>
+
+          <p
+            style={{
+              marginBottom: "25px",
+              color: "#6b7280",
               fontSize: "14px"
             }}
           >
-            {error}
-          </div>
+            Inicia sesión para continuar
+          </p>
 
-        )}
+          {error && (
 
-        <form onSubmit={handleSubmit}>
-
-          {/* EMAIL */}
-
-          <div style={{ marginBottom: "15px" }}>
-
-            <label style={{
-              fontSize: "13px",
-              color: "#cbd5f5"
-            }}>
-              Correo electrónico
-            </label>
-
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-              placeholder="tu@email.com"
+            <div
               style={{
-                width: "100%",
+                background: "#ffe4e6",
+                color: "#be123c",
                 padding: "10px",
-                marginTop: "6px",
-                borderRadius: "8px",
-                border: "1px solid #334155",
-                background: "#0f172a",
-                color: "white"
-              }}
-            />
-
-          </div>
-
-          {/* PASSWORD */}
-
-          <div style={{ marginBottom: "10px" }}>
-
-            <label style={{
-              fontSize: "13px",
-              color: "#cbd5f5"
-            }}>
-              Contraseña
-            </label>
-
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-              placeholder="••••••••"
-              style={{
-                width: "100%",
-                padding: "10px",
-                marginTop: "6px",
-                borderRadius: "8px",
-                border: "1px solid #334155",
-                background: "#0f172a",
-                color: "white"
-              }}
-            />
-
-          </div>
-
-          {/* RECUPERAR CONTRASEÑA */}
-
-          <div style={{
-            textAlign: "right",
-            marginBottom: "20px",
-            fontSize: "13px"
-          }}>
-
-            <Link
-              to="/forgot-password"
-              style={{
-                color: "#3b82f6",
-                textDecoration: "none"
+                borderRadius: "10px",
+                marginBottom: "15px",
+                fontSize: "14px"
               }}
             >
-              ¿Olvidaste tu contraseña?
+              {error}
+            </div>
+
+          )}
+
+          <form onSubmit={handleSubmit}>
+
+            {/* INPUT CORREO */}
+
+            <div style={{ marginBottom: "18px" }}>
+
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                placeholder="Correo electrónico"
+                style={{
+                  width: "100%",
+                  padding: "12px",
+                  borderRadius: "10px",
+                  border: "1px solid #e5e7eb",
+                  background: "#f9fafb",
+                  color: "#111827" // texto visible
+                }}
+              />
+
+            </div>
+
+            {/* INPUT CONTRASEÑA */}
+
+            <div style={{ marginBottom: "10px" }}>
+
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                required
+                placeholder="Contraseña"
+                style={{
+                  width: "100%",
+                  padding: "12px",
+                  borderRadius: "10px",
+                  border: "1px solid #e5e7eb",
+                  background: "#f9fafb",
+                  color: "#111827" // texto visible
+                }}
+              />
+
+            </div>
+
+            {/* LINK OLVIDÉ CONTRASEÑA */}
+
+            <div
+              style={{
+                textAlign: "right",
+                marginBottom: "22px",
+                fontSize: "13px"
+              }}
+            >
+
+              <Link
+                to="/forgot-password"
+                style={{
+                  color: "#ec4899",
+                  textDecoration: "none"
+                }}
+              >
+                ¿Olvidaste tu contraseña?
+              </Link>
+
+            </div>
+
+            {/* BOTÓN LOGIN */}
+
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                width: "100%",
+                background: "linear-gradient(135deg,#f472b6,#ec4899)",
+                border: "none",
+                padding: "13px",
+                borderRadius: "10px",
+                fontWeight: "600",
+                color: "white",
+                cursor: "pointer",
+                fontSize: "15px"
+              }}
+            >
+              {loading ? "Entrando..." : "Entrar"}
+            </button>
+
+          </form>
+
+          {/* LINK REGISTRO */}
+
+          <p
+            style={{
+              marginTop: "25px",
+              textAlign: "center",
+              fontSize: "14px",
+              color: "#6b7280"
+            }}
+          >
+
+            ¿No tienes cuenta?{" "}
+
+            <Link
+              to="/register"
+              style={{
+                color: "#ec4899",
+                textDecoration: "none",
+                fontWeight: "600"
+              }}
+            >
+              Regístrate
             </Link>
 
-          </div>
+          </p>
 
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              width: "100%",
-              background: "#2563eb",
-              border: "none",
-              padding: "12px",
-              borderRadius: "8px",
-              fontWeight: "600",
-              color: "white",
-              cursor: "pointer"
-            }}
-          >
-            {loading ? "Entrando..." : "Entrar"}
-          </button>
-
-        </form>
-
-        <p style={{
-          marginTop: "20px",
-          textAlign: "center",
-          fontSize: "14px",
-          color: "#94a3b8"
-        }}>
-
-          ¿No tienes cuenta?{" "}
-
-          <Link
-            to="/register"
-            style={{
-              color: "#3b82f6",
-              textDecoration: "none",
-              fontWeight: "600"
-            }}
-          >
-            Regístrate aquí
-          </Link>
-
-        </p>
+        </div>
 
       </div>
 

@@ -1,4 +1,4 @@
-    import { useState } from "react"
+import { useState } from "react"
 import { supabase } from "../lib/supabaseClient"
 import { Link } from "react-router-dom"
 
@@ -28,71 +28,127 @@ export function ForgotPassword() {
     }
 
     setLoading(false)
+
   }
 
   return (
 
-    <div style={{
-      minHeight: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      background: "linear-gradient(135deg,#0f172a,#1e293b)"
-    }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(135deg,#fbc2eb,#a6c1ee)",
+        fontFamily: "Segoe UI, sans-serif",
+        padding: "20px"
+      }}
+    >
 
-      <div style={{
-        width: "380px",
-        background: "#1e293b",
-        padding: "35px",
-        borderRadius: "12px",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
-        color: "white"
-      }}>
+      {/* HEADER */}
 
-        <h1>Recuperar contraseña</h1>
+      <div
+        style={{
+          textAlign: "center",
+          marginBottom: "35px",
+          color: "white"
+        }}
+      >
 
-        <p style={{color:"#94a3b8", marginBottom:"20px"}}>
-          Ingresa tu correo y te enviaremos un enlace para cambiar tu contraseña
+        <div style={{ fontSize: "55px", marginBottom: "10px" }}>
+          📩
+        </div>
+
+        <h1 style={{
+          margin: 0,
+          fontSize: "32px",
+          fontWeight: 700
+        }}>
+          Recuperar acceso
+        </h1>
+
+        <p style={{
+          marginTop: "10px",
+          fontSize: "16px",
+          opacity: 0.9
+        }}>
+          Te enviaremos un enlace para restablecer tu contraseña
         </p>
 
+      </div>
+
+
+      {/* TARJETA */}
+
+      <div
+        style={{
+          width: "380px",
+          background: "white",
+          padding: "35px",
+          borderRadius: "18px",
+          boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
+          color: "#374151"
+        }}
+      >
+
         {error && (
-          <div style={{
-            background:"#7f1d1d",
-            padding:"10px",
-            borderRadius:"6px",
-            marginBottom:"15px"
-          }}>
+          <div
+            style={{
+              background: "#ffe4e6",
+              color: "#be123c",
+              padding: "10px",
+              borderRadius: "10px",
+              marginBottom: "15px",
+              fontSize: "14px"
+            }}
+          >
             {error}
           </div>
         )}
 
         {message && (
-          <div style={{
-            background:"#14532d",
-            padding:"10px",
-            borderRadius:"6px",
-            marginBottom:"15px"
-          }}>
+          <div
+            style={{
+              background: "#dcfce7",
+              color: "#166534",
+              padding: "10px",
+              borderRadius: "10px",
+              marginBottom: "15px",
+              fontSize: "14px"
+            }}
+          >
             {message}
           </div>
         )}
 
         <form onSubmit={handleSubmit}>
 
+          <label
+            style={{
+              fontSize: "13px",
+              color: "#6b7280",
+              marginBottom: "6px",
+              display: "block"
+            }}
+          >
+            Correo electrónico
+          </label>
+
           <input
             type="email"
             placeholder="correo@email.com"
             value={email}
-            onChange={(e)=>setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
             style={{
-              width:"100%",
-              padding:"10px",
-              borderRadius:"8px",
-              border:"1px solid #334155",
-              background:"#0f172a",
-              color:"white",
-              marginBottom:"15px"
+              width: "100%",
+              padding: "12px",
+              borderRadius: "12px",
+              border: "1px solid #e5e7eb",
+              background: "#f9fafb",
+              outline: "none",
+              marginBottom: "20px"
             }}
           />
 
@@ -100,27 +156,43 @@ export function ForgotPassword() {
             type="submit"
             disabled={loading}
             style={{
-              width:"100%",
-              padding:"12px",
-              border:"none",
-              borderRadius:"8px",
-              background:"#3b82f6",
-              color:"white",
-              fontWeight:"600"
+              width: "100%",
+              padding: "13px",
+              border: "none",
+              borderRadius: "12px",
+              background: "linear-gradient(135deg,#f472b6,#ec4899)",
+              color: "white",
+              fontWeight: "600",
+              fontSize: "15px",
+              cursor: loading ? "not-allowed" : "pointer",
+              boxShadow: "0 6px 15px rgba(236,72,153,0.4)"
             }}
           >
-            {loading ? "Enviando..." : "Enviar correo"}
+            {loading ? "Enviando enlace..." : "Enviar enlace de recuperación"}
           </button>
 
         </form>
 
-        <p style={{marginTop:"20px", textAlign:"center"}}>
+        <div
+          style={{
+            marginTop: "25px",
+            textAlign: "center",
+            fontSize: "14px"
+          }}
+        >
 
-          <Link to="/login" style={{color:"#3b82f6"}}>
-            Volver al login
+          <Link
+            to="/login"
+            style={{
+              color: "#ec4899",
+              textDecoration: "none",
+              fontWeight: "600"
+            }}
+          >
+            ← Volver al login
           </Link>
 
-        </p>
+        </div>
 
       </div>
 

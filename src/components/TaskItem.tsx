@@ -1,5 +1,3 @@
-// src/components/TaskItem.tsx
-
 import { useState } from "react"
 import type { Tarea } from "../types/database"
 
@@ -51,11 +49,12 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
         display: "flex",
         gap: "14px",
         alignItems: "center",
-        padding: "14px",
-        background: "#1e293b",
-        borderRadius: "10px",
-        marginBottom: "10px",
-        border: "1px solid #334155",
+        padding: "16px",
+        background: "white",
+        borderRadius: "14px",
+        marginBottom: "12px",
+        border: "1px solid #f1f5f9",
+        boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
         opacity: eliminando ? 0.5 : 1,
         transition: "all 0.2s"
       }}
@@ -66,8 +65,8 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
         checked={tarea.completada}
         onChange={() => onActualizar(tarea.id, !tarea.completada)}
         style={{
-          width: "18px",
-          height: "18px",
+          width: "20px",
+          height: "20px",
           cursor: "pointer"
         }}
       />
@@ -84,11 +83,12 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
               style={{
                 width: "100%",
                 marginBottom: "6px",
-                padding: "6px",
-                borderRadius: "6px",
-                border: "1px solid #334155",
-                background: "#0f172a",
-                color: "white"
+                padding: "8px",
+                borderRadius: "10px",
+                border: "1px solid #e5e7eb",
+                background: "#f9fafb",
+                fontSize: "14px",
+                outline: "none"
               }}
             />
 
@@ -97,11 +97,12 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
               onChange={(e) => setDescripcion(e.target.value)}
               style={{
                 width: "100%",
-                padding: "6px",
-                borderRadius: "6px",
-                border: "1px solid #334155",
-                background: "#0f172a",
-                color: "white"
+                padding: "8px",
+                borderRadius: "10px",
+                border: "1px solid #e5e7eb",
+                background: "#f9fafb",
+                fontSize: "14px",
+                outline: "none"
               }}
             />
 
@@ -116,7 +117,7 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
                 display: "block",
                 fontSize: "15px",
                 textDecoration: tarea.completada ? "line-through" : "none",
-                color: tarea.completada ? "#64748b" : "white"
+                color: tarea.completada ? "#9ca3af" : "#374151"
               }}
             >
               {tarea.titulo}
@@ -127,7 +128,7 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
               <p
                 style={{
                   margin: "4px 0 0 0",
-                  color: "#94a3b8",
+                  color: "#6b7280",
                   fontSize: "13px"
                 }}
               >
@@ -145,8 +146,35 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
       {editando ? (
 
         <>
-          <button onClick={handleGuardar}>💾</button>
-          <button onClick={cancelarEdicion}>❌</button>
+
+          <button
+            onClick={handleGuardar}
+            style={{
+              border: "none",
+              background: "#22c55e",
+              color: "white",
+              padding: "6px 10px",
+              borderRadius: "8px",
+              cursor: "pointer"
+            }}
+          >
+            💾
+          </button>
+
+          <button
+            onClick={cancelarEdicion}
+            style={{
+              border: "none",
+              background: "#f472b6",
+              color: "white",
+              padding: "6px 10px",
+              borderRadius: "8px",
+              cursor: "pointer"
+            }}
+          >
+            ✖
+          </button>
+
         </>
 
       ) : (
@@ -154,11 +182,12 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
         <button
           onClick={() => setEditando(true)}
           style={{
-            background: "transparent",
             border: "none",
-            color: "#38bdf8",
-            cursor: "pointer",
-            fontSize: "14px"
+            background: "#f472b6",
+            color: "white",
+            padding: "6px 10px",
+            borderRadius: "8px",
+            cursor: "pointer"
           }}
         >
           ✏
@@ -170,12 +199,12 @@ export function TaskItem({ tarea, onActualizar, onEditar, onEliminar }: Props) {
         onClick={handleEliminar}
         disabled={eliminando}
         style={{
-          background: "transparent",
           border: "none",
-          color: "#ef4444",
-          fontWeight: "600",
-          cursor: "pointer",
-          fontSize: "14px"
+          background: "#ef4444",
+          color: "white",
+          padding: "6px 10px",
+          borderRadius: "8px",
+          cursor: "pointer"
         }}
       >
         🗑
