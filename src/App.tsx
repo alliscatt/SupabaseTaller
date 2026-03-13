@@ -1,0 +1,46 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { AuthProvider } from "./context/AuthContext"
+import { PrivateRoute } from "./components/PrivateRoute"
+
+import { Login } from "./pages/login"
+import { Register } from "./pages/Register"
+import { ForgotPassword } from "./pages/ForgotPassword"
+import { Home } from "./pages/Home"
+import { Dashboard } from "./pages/Dashboard"
+import { ResetPassword } from "./pages/ResetPassword"
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+
+        <Routes>
+
+          {/* Rutas públicas */}
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/register" element={<Register />} />
+
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          <Route path="/reset-password" element={<ResetPassword />} />
+
+          {/* Rutas protegidas */}
+
+          <Route element={<PrivateRoute />}>
+
+            <Route path="/" element={<Home />} />
+
+            <Route path="/dashboard" element={<Dashboard />} />
+
+          </Route>
+
+        </Routes>
+
+      </BrowserRouter>
+    </AuthProvider>
+  )
+}
+
+export default App
