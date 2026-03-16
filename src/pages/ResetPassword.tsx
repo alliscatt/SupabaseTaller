@@ -42,7 +42,7 @@ export function ResetPassword() {
       }}
     >
 
-      {/* PANEL IZQUIERDO */}
+      {/* PANEL IZQUIERDOo */}
 
       <div
         style={{
